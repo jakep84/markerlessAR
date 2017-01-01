@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class webCamScript : MonoBehaviour {
 
 	public GameObject webCameraPlane;
+	public Button firebutton;
 
 	// Use this for initialization
 	void Start () {
@@ -16,11 +18,28 @@ public class webCamScript : MonoBehaviour {
 		}
 
 		Input.gyro.enabled = true;
+		firebutton.onClick.AddListener (OnButtonDown);
 
 		WebCamTexture webCameraTexture = new WebCamTexture();
 		webCameraPlane.GetComponent<MeshRenderer> ().material.mainTexture = webCameraTexture;
 		webCameraTexture.Play ();
 	}
+
+	void OnButtonDown() {
+		
+		GameObject bullet = Instantiate (Resources.Load ("bullet", typeof(GameObject))) as GameObject;
+		Rigidbody rb = bullet.GetComponent<Rigidbody> ();
+		bullet.transform.rotation = Camera.main.transform.rotation;
+		bullet.transform.position = Camera.main.transform.position;
+		rb.AddForce (Camera.main.transform.forward * 500f);
+		Destroy (bullet, 3);
+
+		GetComponent<AudioSource> ().Play ();
+
+
+
+	}
+
 	
 	// Update is called once per frame
 	void Update () {
