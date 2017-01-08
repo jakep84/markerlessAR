@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\appExit.cs" />
      <Compile Include="Assets\collissionScript.cs" />
      <Compile Include="Assets\enemyScript.cs" />
      <Compile Include="Assets\webCamScript.cs" />
