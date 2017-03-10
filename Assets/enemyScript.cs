@@ -12,15 +12,15 @@ public class enemyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		transform.Translate(Vector3.forward * 3f * Time.deltaTime);
+		transform.Translate(Vector3.forward * 5f * Time.deltaTime);
 
 	}
 
 	IEnumerator Move() {
 		 
 		while (true) {
-			yield return new WaitForSeconds (3.5f);
-			transform.eulerAngles += new Vector3 (0, 180f, 0);
+			yield return new WaitForSeconds (10f);
+			transform.eulerAngles += new Vector3 (0, 45f, 0);
 		}
 	}
 }
